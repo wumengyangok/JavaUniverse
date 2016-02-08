@@ -1,57 +1,47 @@
 package sample;
 
+import java.util.ArrayList;
+
 /**
  * Created by wumengyang on 30/01/2016.
  */
 public class ExampleStar {
     private String name;
-    private int mass;
     private int radius;
-    private int positionX;
-    private int positionY;
-    private int age;
-    private double lengthOfDay;
+    private int orbitRadius;
     private double lengthOfYear;
-    private double gravity;
-    ExampleStar(
-            String name, int mass, int radius, int positionX, int positionY,
-            int age, double lengthOfDay, double lengthOfYear, double gravity
-    ) {
+    private ArrayList<ExampleStar> moons;
+
+    ExampleStar(String name, int radius, int age, double lengthOfYear, int orbitRadius) {
+        this.moons = new ArrayList<ExampleStar>();
         this.name = name;
-        this.mass = mass;
         this.radius = radius;
-        this.positionX = positionX;
-        this.positionY = positionY;
-        this.age = age;
-        this.lengthOfDay = lengthOfDay;
         this.lengthOfYear = lengthOfYear;
-        this.gravity = gravity;
+        this.orbitRadius = orbitRadius;
+
     }
+
     public String getName() {
         return name;
     }
-    public int getMass() {
-        return mass;
-    }
+
     public int getRadius() {
         return radius;
     }
-    public int getPositionX() {
-        return positionX;
-    }
-    public int getPositionY() {
-        return positionY;
-    }
-    public int getAge() {
-        return age;
-    }
-    public double getLengthOfDay() {
-        return lengthOfDay;
-    }
+
     public double getLengthOfYear() {
         return lengthOfYear;
     }
-    public double getGravity() {
-        return gravity;
+
+    public void addMoon(ExampleStar moon) {
+        moons.add(moon);
+    }
+
+    public int getOrbitRadius() {
+        return orbitRadius;
+    }
+
+    public ArrayList<ExampleStar> getMoons() {
+        return moons;
     }
 }
