@@ -12,15 +12,19 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import static java.lang.Math.*;
-
+/*
+* Demo of a solar system */
 public class Main extends Application {
     private ExampleStar sun;
     @Override
     public void start(Stage primaryStage) throws Exception{
-
-        sun = new ExampleStar("Sun", 50, 64, 0.0, 0);
-        sun.addMoon(new ExampleStar("Earth", 10, 64, 365, 100));
-        sun.addMoon(new ExampleStar("Mars", 5, 64, 450, 150));
+/*
+* Modify the following line of code, and feel free to add some planets to the system.*/
+        sun = new ExampleStar("Sun", 50, 0.0, 0, "yellow");
+        sun.addMoon(new ExampleStar("Mercury", 5, 88, 74, "gray"));
+        sun.addMoon(new ExampleStar("Venus", 6, 225, 107, "orange"));
+        sun.addMoon(new ExampleStar("Earth", 8, 365, 140, "blue"));
+        sun.addMoon(new ExampleStar("Mars", 5, 687, 205, "red"));
 
         Group root = new Group();
         Scene scene = new Scene(root, 600, 600, Color.BLACK);
@@ -28,15 +32,13 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         Group circles = new Group();
 
-        Circle aCircle = new Circle(300, 300, sun.getRadius(), Color.YELLOW);
-        aCircle.setStroke(Color.web("yellow", 0.3));
+        Circle aCircle = new Circle(300, 300, sun.getRadius(), Color.web(sun.getColor(), 1.0));
+        aCircle.setStroke(Color.web(sun.getColor(), 0.3));
         aCircle.setStrokeWidth(10);
         circles.getChildren().add(aCircle);
 
         for (int i = 0; i < sun.getMoons().size(); i++) {
-            Circle circle = new Circle(10, Color.BLUE);
-            circle.setStroke(Color.web("blue", 0.3));
-            circle.setStrokeWidth(2);
+            Circle circle = new Circle(sun.getMoons().get(i).getRadius(), Color.web(sun.getMoons().get(i).getColor(), 1.0));
             circles.getChildren().add(circle);
         }
         root.getChildren().add(circles);
@@ -53,12 +55,12 @@ public class Main extends Application {
                             new KeyValue(circle.translateYProperty(), center.getCenterY() - r)
                     )
             );
-            for (int j = 0; j < 360; j++) {
+            for (int j = 0; j < 1080; j++) {
                 double degree = (double) j;
                 timeline.getKeyFrames().add(
-                        new KeyFrame(Duration.seconds(sun.getMoons().get(i).getLengthOfYear() / 360 * degree),
-                                new KeyValue(circle.translateXProperty(), center.getCenterX() - sin(degree / 180 * PI) * r),
-                                new KeyValue(circle.translateYProperty(), center.getCenterY() - cos(degree / 180 * PI) * r)
+                        new KeyFrame(Duration.seconds(j),
+                                new KeyValue(circle.translateXProperty(), center.getCenterX() - sin(degree / 180 * PI / sun.getMoons().get(i).getLengthOfYear() * 360.0) * r),
+                                new KeyValue(circle.translateYProperty(), center.getCenterY() - cos(degree / 180 * PI / sun.getMoons().get(i).getLengthOfYear() * 360.0) * r)
                         )
                 );
             }

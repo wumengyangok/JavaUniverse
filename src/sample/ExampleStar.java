@@ -6,15 +6,22 @@ import java.util.ArrayList;
  * Created by wumengyang on 30/01/2016.
  */
 public class ExampleStar {
+    private String color;
     private String name;
     private int radius;
     private int orbitRadius;
     private double lengthOfYear;
     private ArrayList<ExampleStar> moons;
 
-    ExampleStar(String name, int radius, int age, double lengthOfYear, int orbitRadius) {
+    public String getColor() {
+        return color;
+    }
+
+    ExampleStar(String name, int radius, double lengthOfYear, int orbitRadius, String color) {
         this.moons = new ArrayList<ExampleStar>();
         this.name = name;
+        this.color = color;
+
         this.radius = radius;
         this.lengthOfYear = lengthOfYear;
         this.orbitRadius = orbitRadius;
