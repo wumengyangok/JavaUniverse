@@ -12,7 +12,6 @@ public class ExampleStar {
     private int orbitRadius;
     private double lengthOfYear;
     private ArrayList<ExampleStar> moons;
-
     public String getColor() {
         return color;
     }
