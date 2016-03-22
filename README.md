@@ -21,4 +21,4 @@ Step 3: Open Main.java and have a look at the method initializeSolarSystem().
 
 Step 4: Review the constructor of ExampleStar Class and modify the code in initializeSolarSystem()
 
-Finally, give it a run and enjoy the beauty of universe!
+Finally, give it a run and enjoy the beauty of the universe!
